@@ -9,4 +9,8 @@ describe("add", () => {
   it("Add 3 (,) separated numbers with \\n handled.", () => {
     expect(add("1\n2,3")).toBe(6);
   });
+
+  it("Support different delimiter.", () => {
+    expect(add("//;\n1;2")).toBe(3);
+  });
 });
