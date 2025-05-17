@@ -13,4 +13,12 @@ describe("add", () => {
   it("Support different delimiter.", () => {
     expect(add("//;\n1;2")).toBe(3);
   });
+
+  it("Handle negative number with exception.", () => {
+    expect(() => add("//;\n1;-2")).toThrow("negative numbers not allowed -2");
+  });
+
+  it("Handle multiple negative numbers with exception.", () => {
+    expect(() => add("1,-2,-3")).toThrow("negative numbers not allowed -2, -3");
+  });
 });
