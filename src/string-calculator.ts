@@ -5,6 +5,17 @@ export function add(numbers: string): number {
     numbers = numbers.slice(indexOfFirstNewline + 1).replaceAll(delimiter, ",");
   }
 
+  const letters: string[] = [];
+
+  numbers
+    .replaceAll("\n", ",")
+    .split(",")
+    .forEach((value) => {
+      if (isNaN(Number(value))) letters.push(value);
+    });
+
+  if (letters.length) throw `${letters.join(",")} is not allowed.`;
+
   const numberList = numbers
     .replaceAll("\n", ",")
     .split(",")
